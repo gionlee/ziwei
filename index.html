@@ -15,7 +15,7 @@
                 </audio>
     <div class="screen">
         <div class="login">
-            <input id="user" class="user" type="text" placeholder="请输入你的名字">
+            <input id="user" class="user" type="text" onkeydown="checkEnter()" placeholder="请输入你的名字">
                 <div id="heart" onclick="login()"></div>
         </div>
         <div class="landscape"></div>
@@ -27,5 +27,13 @@
 </body>
 <script src="./js/jquery-3.4.1.min.js"></script>
 <script src="./js/index.js">
+</script>
+<script>
+    function checkEnter(e) {
+        var ev = e || window.event;
+            if(ev.keyCode==13) {
+                login();
+            }
+    }
 </script>
 </html>
