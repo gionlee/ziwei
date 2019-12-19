@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+
+<html  lang="en">
+
+<head>
+
+	<title></title>
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	<style type="text/css">
+
+		@font-face {
+
+			font-family: digit;
+
+			src: url('digital-7_mono.ttf') format("truetype");
+
+		}
+
+	</style>
+
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+
+	<script src="../js/jquery-3.4.1.min.js"></script>
+
+	<script type="text/javascript" src="js/garden.js"></script>
+
+    <script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+
+
+<body>
+
+	<div id="mainDiv">
+
+		<div id="content">
+
+			<div id="code">
+
+				<span class="comments">/**</span><br />
+
+				<span class="space"/><span class="comments">* I write some code to tell you what I want say.</span><br />
+
+				<span class="space"/><span class="comments">*/</span><br />
+
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"Li Zhen"</span>);<br />
+
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"Zhang Zi Wei"</span>);<br />
+
+				i.meet(u);<br />
+
+				<span class="comments">// Lucky to meet you on a memorable weekend</span><br />
+
+				i.miss(u);<br />
+
+				<span class="comments">/**</span><br />
+
+				<span class="space"/><span class="comments">* Since then, I miss u every day.</span><br />
+
+				<span class="space"/><span class="comments">* And looking forward to meeting you.</span><br />
+
+				<span class="space"/><span class="comments">*/</span><br />
+				i.tell(u); <br />
+				<span class="comments">/**</span><br />
+
+				<span class="space"/><span class="comments">* I have been looking for a suitable opportunity.</span><br />
+
+				<span class="space"/><span class="comments">* Now, I told you I love you. </span><br />
+
+				<span class="space"/><span class="comments">*/</span><br />
+
+				<span class="keyword">boolean</span> isHesitate = <span class="keyword">true</span>;<br />
+
+				<span class="keyword">while</span> (isHesitate) {<br />
+
+				<span class="placeholder"/>i.waitFor(u);<br />
+
+				<span class="placeholder"/><span class="comments">// I think it is an important decision</span><br />
+
+				<span class="placeholder"/><span class="comments">// and you should think it over.</span><br />
+
+				<span class="placeholder"/>isHesitate = u.thinkOver();<br />
+
+				}<br />
+				
+				i.takeCareOf(u);<br />
+			</div>
+
+			<div id="loveHeart">
+
+				<canvas id="garden"></canvas>
+
+				<div id="words">
+
+					<div id="messages">
+
+							Zhang Zi Wei, I have fallen in love with you for
+
+						<div id="elapseClock"></div>
+
+					</div>
+
+					<div id="loveu">
+
+						Love u forever and ever.<br/>
+
+						<div class="signature">- Li Zhen</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	
+
+	</div>
+
+	<script type="text/javascript">
+
+		var offsetX = $("#loveHeart").width() / 2;
+
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+
+		if (!document.createElement('canvas').getContext) {
+
+			var msg = document.createElement("div");
+
+			msg.id = "errorMsg";
+
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+
+			document.body.appendChild(msg);
+
+			$("#code").css("display", "none")
+
+			$("#copyright").css("position", "absolute");
+
+			$("#copyright").css("bottom", "10px");
+
+		    document.execCommand("stop");
+
+		} else {
+
+			setTimeout(function () {
+
+				startHeartAnimation();
+
+			}, 5000);
+
+
+
+			timeElapse();
+
+			setInterval(function () {
+
+				timeElapse();
+
+			}, 500);
+
+
+
+			adjustCodePosition();
+
+			$("#code").typewriter();
+
+		}
+		function timeElapse () {
+			let beginTimes = new Date('2019-12-15 20:30:00').getTime();
+			let nowTimes = new Date().getTime();
+			let times =nowTimes - beginTimes;
+			let yearTime = 1000 * 60 * 60 * 24 * 365;
+			let monthTime = 1000 * 60 * 60 * 24 * 30;
+			let dayTime = 1000 * 60 * 60 * 24 ;
+			let hoursTime = 1000 * 60 * 60;
+			let minTime = 1000 * 60;
+			let years = 0,
+			month = 0,
+			day = 0,
+			hours = 0,
+			min = 0,
+			sec = 0 
+			if (times > yearTime) {
+				years = parseInt(times/yearTime);
+				times = times - years * yearTime
+			}
+			if (times > monthTime) {
+				month = parseInt(times/ monthTime);
+				times = times - month * monthTime
+			}
+			if (times > dayTime) {
+				day = parseInt(times/dayTime);
+				times = times - day * dayTime
+			}
+			if (times > hoursTime) {
+				hours = parseInt(times/hoursTime);
+				times = times - hours * hoursTime
+			}
+			if (times > minTime) {
+				min =parseInt(times/minTime);
+				times = times - min * minTime
+			}
+			sec = parseInt(times/1000);
+			$('#elapseClock').html(`${years > 0 ? years + 'Years' : ''} ${month > 0 ? month + 'Months' : ''} ${day} Days ${hours} hours ${min} Minutes ${sec} Seconds !`)
+		}
+
+	</script>
+
+</body>
+
+</html>
+
